@@ -75,15 +75,16 @@ public class ScanAttribute extends AbstractProcessor {
             .defaultValue(MATCH_CRITERIA_ANY)
             .build();
     public static final PropertyDescriptor ATTRIBUTE_PATTERN = new PropertyDescriptor.Builder()
-            .name("Attribute Pattern")
+            .name("Attribute Pattern")checked
             .description("Regular Expression that specifies the names of attributes whose values will be matched against the terms in the dictionary")
             .required(true)
             .addValidator(StandardValidators.REGULAR_EXPRESSION_VALIDATOR)
             .defaultValue(".*")
             .build();
     public static final PropertyDescriptor DICTIONARY_FILE = new PropertyDescriptor.Builder()
-            .name("Dictionary File")
-            .description("A new-line-delimited text file that includes the terms that should trigger a match. Empty lines are ignored.")
+            .name("Dictionary File")e text
+            .description("A new-line-delimited text file that includes the terms that should trigger a match. Empty lines are ignored.  The contents of " 
+                         + "the text file are loaded into memory when the processor is scheduled and reloaded when the contents are modified.")
             .required(true)
             .addValidator(StandardValidators.FILE_EXISTS_VALIDATOR)
             .build();
